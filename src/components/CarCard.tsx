@@ -4,7 +4,7 @@
 
 // useState - чисто клиентская залупа, позволяет тебе хранить данные в 
 // области видимости компонента и отслеживать их изменения
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // Здесь импортируется именно иконка сердца из библиотеки иконок
 // Если бы не было фигурных скобок - пришлось бы писать Heart.Heart, 
 // чтоб её достать
@@ -34,6 +34,17 @@ export default function CarCard(props: CarCardProps) {
 	// [переменная, функция для изменения значения] = useState<Тип переменной>(значения по умолчанию)
 	const [imageLoaded, setImageLoaded] = useState(false);
 	const [isFavorite, setIsFavorite] = useState(false);
+	const imgRef = useRef<HTMLImageElement>(null);
+
+	useEffect(() => {
+		if (imgRef.current?.complete) {
+			setImageLoaded(true);
+		}
+	}, [props.imageUrl]);
+
+	const handleImgLoad = () => {
+		setImageLoaded(true);
+	};
 
 	// классы пишем в className, потому что class - зарезервированное слово
 	return (
@@ -47,10 +58,11 @@ export default function CarCard(props: CarCardProps) {
 				нужно делать это внутри фигурных скбок */}
 				{props.imageUrl && (
 					<img
+						ref={imgRef}
 						src={props.imageUrl}
 						alt={props.title}
 						className={cn(["w-full h-full object-cover transition-all duration-300 rounded", imageLoaded ? "opacity-100" : "opacity-0"])}
-						onLoad={() => setImageLoaded(true)}
+						onLoad={handleImgLoad}
 					/>
 				)}
 				{/*Использование компонента, мало чем отличается от обычной разметки*/}
