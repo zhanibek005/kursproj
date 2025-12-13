@@ -25,7 +25,7 @@ export default function SampleModal() {
 				<Terminal className="h-4 w-4" />
 				<AlertTitle>Проверяй</AlertTitle>
 				<AlertDescription>
-					Хуй был успешно отправлен тебе за щеку
+					Отправлено сообщение
 				</AlertDescription>
 			</Alert>
 		))
@@ -36,7 +36,7 @@ export default function SampleModal() {
 		toast.custom(() => (
 			<Alert variant="destructive">
 				<AlertTriangle className="h-4 w-4" />
-				<AlertTitle>А похуй</AlertTitle>
+				<AlertTitle>Поздно</AlertTitle>
 				<AlertDescription>
 					Всё равно отправил
 				</AlertDescription>
@@ -48,12 +48,12 @@ export default function SampleModal() {
 		<Dialog open={dialogOpen} onOpenChange={(v) => setDialogOpen(v)}>
 			<DialogTrigger asChild>
 				<Button>
-					<span>Сюда жми</span>
+					<span>Отправить</span>
 				</Button>
 			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Форма отправки моего хуя тебе за щеку</DialogTitle>
+					<DialogTitle>Форма отправки</DialogTitle>
 				</DialogHeader>
 				<SampleForm onSubmit={onSubmit} onCancel={onCancel} />
 			</DialogContent>
