@@ -1,6 +1,5 @@
 "use client";
 import CarCard from "@/components/CarCard";
-import PerCard from "@/components/PerCard";
 import SampleModal from "@/components/SampleDialog";
 import ThemeButton from "@/components/ThemeButton";
 import Image from "next/image";
@@ -31,8 +30,9 @@ export default function Home() {
             <span className="text-xl p-4 pl-10">Оставьте заявку</span>
           </Button>
         </div>
-
-        <Forum onSubmit={funcName} onCancel={funcName} />
+        <div className="my-4">
+          <Forum onSubmit={funcName} onCancel={funcName} />
+        </div>
 
         <ThemeButton />
         <div className="rounded-md grid p-2 grid-cols-4 gap-2 justify-between w-full">
@@ -78,11 +78,11 @@ export default function Home() {
             price={3.5}
             imageUrl="https://i.pinimg.com/originals/d9/25/2d/d9252d7f73fd1ec4cefc02bc4820633d.jpg"
           />
-          <PerCard
-            name="title"
-            position="positions"
-            skills={["skill1", "skill2", "skill3"]}
-            imageUrl="https://content.kaspersky-labs.com/fm/site-editor/dc/dc17dbf731bc7c7018d13ffe643e480d/processed/case-study-neo-q93-r1920.jpg"
+          <CarCard
+            title="title"
+            labels={["label1", "label2", "label3"]}
+            price={3.5}
+            imageUrl="https://i.pinimg.com/originals/d9/25/2d/d9252d7f73fd1ec4cefc02bc4820633d.jpg"
           />
         </div>
         <SampleModal />
